@@ -31,3 +31,9 @@ Note: Site runs on http://127.0.0.1:8000/ and admin console path is http://127.0
 
 10. Set superuser for admin console
 python3 manage.py createsuperuser
+
+11. To install all country codes
+pip install pycountry 
+
+12. Pouplate all countries to Oscar dashboard. Note: --no-shipping doesn't select any default country.
+python manage.py oscar_populate_countries --no-shipping
