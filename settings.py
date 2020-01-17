@@ -182,3 +182,5 @@ MEDIA_URL = '/media/'
 OSCAR_SHOP_NAME = 'SACHINs EShop'
 
 OSCAR_DEFAULT_CURRENCY = 'INR'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
