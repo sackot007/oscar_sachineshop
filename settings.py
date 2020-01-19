@@ -187,6 +187,7 @@ OSCAR_DEFAULT_CURRENCY = 'INR'
 #1. Disable console.EmailBackend
 #2. Set valid username and password
 #3. If you see an error "Username and Password not accepted". Then in your Gmail settings "ALLOW less secure applications"
+# https://myaccount.google.com/lesssecureapps?pli=1 is the url to change the setting.
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
