@@ -183,4 +183,15 @@ OSCAR_SHOP_NAME = 'SACHINs EShop'
 
 OSCAR_DEFAULT_CURRENCY = 'INR'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# TO SEND REAL EMAILS
+#1. Disable console.EmailBackend
+#2. Set valid username and password
+#3. If you see an error "Username and Password not accepted". Then in your Gmail settings "ALLOW less secure applications"
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'YOUREMAIL@gmail.com'
+EMAIL_HOST_PASSWORD = 'PASSWORD'
+EMAIL_PORT = 587
