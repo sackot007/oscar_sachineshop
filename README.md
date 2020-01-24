@@ -37,3 +37,51 @@ pip install pycountry
 
 12. Pouplate all countries to Oscar dashboard. Note: --no-shipping doesn't select any default country.
 python manage.py oscar_populate_countries --no-shipping
+
+
+
+
+======================================================================================================
+
+====================================== For Physical Stores ======================================
+
+On Ubuntu, install following packages. We use spatialite library for Geo mapping.
+
+sudo apt-get install spatialite-bin libspatialite7 libgeos++-dev libgdal-dev libproj9
+sudo apt-get install libsqlite3-mod-spatialite
+
+pip install  pysqlite3
+pip install django-oscar-stores
+
+python3 manage.py collectstatic -- To collect django-oscar-stores static files
+
+In settings.py, add the following for Google Map API key and search distance
+==========================================
+
+INSTALLED_APPS = [
+	.......,
+	'stores',
+    'stores.dashboard',
+	........,
+]
+.........
+# Modified sqlite3 to spatialite.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+.........
+GOOGLE_MAPS_API_KEY = '***********[ENTER_UR_KEY]'
+.........
+from django.contrib.gis.measure import D
+
+# Maximal distance of 25 kilometers
+STORES_MAX_SEARCH_DISTANCE = D(km=25)
+
+
+In urls.py, add the following
+==========================================
+	path('stores/',apps.get_app_config('stores').urls),
+    path('dashboard/stores/', apps.get_app_config('stores_dashboard').urls),
